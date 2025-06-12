@@ -640,19 +640,6 @@
                         <span class="tech-tag">MongoDB</span>
                     </div>
                     <span class="project-status status-completed">Completed</span>
-                    <!-- Optional: add metrics if desired -->
-                    <!--
-                    <div class="project-metrics">
-                        <div class="metric">
-                            <div class="metric-value">250+</div>
-                            <div class="metric-label">Users</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">50k+</div>
-                            <div class="metric-label">Products</div>
-                        </div>
-                    </div>
-                    -->
                 </div>
 
                 <!-- Existing Project 2: Task Manager System -->
@@ -697,9 +684,9 @@
             <h3 class="footer-title">Advancing AI Among the Stars</h3>
             <p style="color: #8ab4f8; margin-bottom: 1rem;">Building responsible AI systems that reach beyond the cosmos</p>
             <div class="social-links">
-                <a href="#" class="social-link">💻 GitHub</a>
-                <a href="#" class="social-link">💼 LinkedIn</a>
-                <a href="#" class="social-link">🎓 Scholar</a>
+                <a href="https://github.com/Bsanchez650" class="social-link" target="_blank" rel="noopener noreferrer">💻 GitHub</a>
+                <a href="https://www.linkedin.com/in/brandon-sanchez650/" class="social-link" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a>
+                <a href="#" class="social-link">🎓 Scholar</a> <!-- Placeholder if no Scholar link provided -->
             </div>
         </footer>
     </div>
@@ -799,7 +786,7 @@
             const projectIcon = prompt('✨ Choose a Project Icon (e.g., 🚀, 🤖, 🎮 - single emoji):');
 
             // Prompt for project status
-            const projectStatusText = prompt('➡️ Enter Project Status (e.g., Planning, Development, Production, Research):');
+            const projectStatusText = prompt('➡️ Enter Project Status (e.g., Planning, Development, Production, Research, Completed, In Progress, Coming Soon):');
 
             // Map user input status to the corresponding CSS class for styling
             let statusClass = 'status-planning'; // Default status
@@ -810,16 +797,16 @@
                 case 'production':
                     statusClass = 'status-production';
                     break;
-                case 'completed': /* Added 'completed' mapping */
+                case 'completed':
                     statusClass = 'status-completed';
                     break;
                 case 'research':
                     statusClass = 'status-research';
                     break;
-                case 'in progress': /* Added 'in progress' mapping for consistency with existing card */
+                case 'in progress':
                     statusClass = 'status-in-progress';
                     break;
-                case 'coming soon': /* Added 'coming soon' mapping */
+                case 'coming soon':
                     statusClass = 'status-coming-soon';
                     break;
                 default:
@@ -834,13 +821,13 @@
 
             // Determine an icon type class based on the chosen icon or default
             let iconTypeClass = '';
-            if (projectIcon && projectIcon.includes('🤖') || projectIcon.includes('🧠') || projectIcon.includes('📊')) {
+            if (projectIcon && (projectIcon.includes('🤖') || projectIcon.includes('🧠') || projectIcon.includes('📊'))) {
                 iconTypeClass = 'ai';
-            } else if (projectIcon && projectIcon.includes('🔗') || projectIcon.includes('💰')) {
+            } else if (projectIcon && (projectIcon.includes('🔗') || projectIcon.includes('💰'))) {
                 iconTypeClass = 'blockchain';
-            } else if (projectIcon && projectIcon.includes('🔬') || projectIcon.includes('🧬')) {
-                iconTypeClass = 'research'; // Assuming you might add this later
-            } else if (projectIcon && projectIcon.includes('⚛️') || projectIcon.includes('🌌')) {
+            } else if (projectIcon && (projectIcon.includes('🔬') || projectIcon.includes('🧬'))) {
+                iconTypeClass = 'research';
+            } else if (projectIcon && (projectIcon.includes('⚛️') || projectIcon.includes('🌌'))) {
                 iconTypeClass = 'quantum';
             } else {
                 iconTypeClass = 'ai'; // Default to AI theme if no specific match
@@ -870,3 +857,4 @@
     </script>
 </body>
 </html>
+
