@@ -5,32 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Portfolio - Cosmic Dark</title>
     <style>
+        /* Universal Box-Sizing */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Body Styling - Cosmic Gradient Background */
         body {
             font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #16213e 100%);
-            color: #ffffff;
-            overflow-x: hidden;
-            min-height: 100vh;
+            color: #ffffff; /* Default text color */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            min-height: 100vh; /* Full viewport height */
             line-height: 1.6;
-            position: relative;
+            position: relative; /* For absolute positioned children */
         }
 
+        /* Stars Background Container */
         .stars-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: -1; /* Behind content */
             overflow: hidden;
         }
 
+        /* Individual Star Styling */
         .star {
             position: absolute;
             background: white;
@@ -58,6 +62,7 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 1);
         }
 
+        /* Shooting Star Styling */
         .shooting-star {
             position: absolute;
             width: 2px;
@@ -67,30 +72,33 @@
             animation: shoot 3s linear infinite;
         }
 
+        /* Floating Orbs Container */
         .floating-orbs {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: -1; /* Behind content, same as stars */
             overflow: hidden;
         }
 
+        /* Individual Orb Styling */
         .orb {
             position: absolute;
             border-radius: 50%;
-            opacity: 0.1;
+            opacity: 0.1; /* Translucent effect */
             animation: float 15s infinite ease-in-out;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%); /* Inner glow */
         }
 
+        /* Specific Orb Colors and Sizes */
         .orb:nth-child(1) {
             top: 20%;
             left: 10%;
             width: 120px;
             height: 120px;
-            background: radial-gradient(circle, rgba(66, 133, 244, 0.3) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(66, 133, 244, 0.3) 0%, transparent 70%); /* Google Blue */
             animation-delay: 0s;
             animation-duration: 20s;
         }
@@ -100,7 +108,7 @@
             right: 15%;
             width: 80px;
             height: 80px;
-            background: radial-gradient(circle, rgba(234, 67, 53, 0.3) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(234, 67, 53, 0.3) 0%, transparent 70%); /* Google Red */
             animation-delay: -5s;
             animation-duration: 25s;
         }
@@ -110,7 +118,7 @@
             left: 20%;
             width: 100px;
             height: 100px;
-            background: radial-gradient(circle, rgba(52, 168, 83, 0.3) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(52, 168, 83, 0.3) 0%, transparent 70%); /* Google Green */
             animation-delay: -10s;
             animation-duration: 18s;
         }
@@ -120,19 +128,21 @@
             right: 30%;
             width: 90px;
             height: 90px;
-            background: radial-gradient(circle, rgba(251, 188, 4, 0.3) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(251, 188, 4, 0.3) 0%, transparent 70%); /* Google Yellow */
             animation-delay: -15s;
             animation-duration: 22s;
         }
 
+        /* Main Content Container */
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 auto; /* Center the container */
             padding: 2rem;
             position: relative;
-            z-index: 1;
+            z-index: 1; /* Above background elements */
         }
 
+        /* Header Section */
         .header {
             text-align: center;
             padding: 6rem 0 4rem;
@@ -145,8 +155,8 @@
             color: #ffffff;
             margin-bottom: 1rem;
             letter-spacing: -2px;
-            animation: fadeInUp 1s ease-out;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: fadeInUp 1s ease-out; /* Intro animation */
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5); /* Glow effect */
         }
 
         .title {
@@ -154,7 +164,7 @@
             color: #a8c8ec;
             font-weight: 400;
             margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
+            animation: fadeInUp 1s ease-out 0.2s both; /* Delayed intro animation */
             text-shadow: 0 0 20px rgba(168, 200, 236, 0.3);
         }
 
@@ -163,10 +173,11 @@
             color: #8ab4f8;
             max-width: 600px;
             margin: 0 auto;
-            animation: fadeInUp 1s ease-out 0.4s both;
+            animation: fadeInUp 1s ease-out 0.4s both; /* Further delayed intro animation */
             opacity: 0.9;
         }
 
+        /* Projects Section */
         .projects-section {
             margin-top: 6rem;
         }
@@ -188,26 +199,29 @@
             font-size: 1.1rem;
         }
 
+        /* Projects Grid Layout */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
             gap: 2rem;
             margin-top: 2rem;
         }
 
+        /* Individual Project Card Styling */
         .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Glassmorphism effect */
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 24px;
             padding: 2.5rem;
             position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1); /* Smooth transition */
             cursor: pointer;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
+            overflow: hidden; /* For inner shimmer effect */
         }
 
+        /* Inner shimmer effect on hover */
         .project-card::before {
             content: '';
             position: absolute;
@@ -218,19 +232,21 @@
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
             opacity: 0;
             transition: opacity 0.3s ease;
-            pointer-events: none;
+            pointer-events: none; /* Allows clicks to pass through */
         }
 
         .project-card:hover::before {
             opacity: 1;
         }
 
+        /* Project Card Hover Effects */
         .project-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2);
+            transform: translateY(-12px) scale(1.02); /* Lift and slight enlarge */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2); /* Enhanced shadow and border */
             border-color: rgba(255, 255, 255, 0.3);
         }
 
+        /* Project Header (Icon + Title) */
         .project-header {
             display: flex;
             align-items: center;
@@ -239,6 +255,7 @@
             z-index: 2;
         }
 
+        /* Project Icon Styling */
         .project-icon {
             width: 48px;
             height: 48px;
@@ -251,8 +268,10 @@
             color: white;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Subtle icon shadow */
         }
 
+        /* Project Icon Shimmer Effect */
         .project-icon::before {
             content: '';
             position: absolute;
@@ -264,20 +283,21 @@
             animation: shimmer 3s infinite;
         }
 
-        .project-icon.ai { 
-            background: linear-gradient(135deg, #4285f4, #34a853);
+        /* Specific Project Icon Backgrounds (Themed) */
+        .project-icon.ai {
+            background: linear-gradient(135deg, #4285f4, #34a853); /* Google Blue-Green */
             box-shadow: 0 0 20px rgba(66, 133, 244, 0.4);
         }
-        .project-icon.blockchain { 
-            background: linear-gradient(135deg, #ea4335, #fbbc04);
+        .project-icon.blockchain {
+            background: linear-gradient(135deg, #ea4335, #fbbc04); /* Google Red-Yellow */
             box-shadow: 0 0 20px rgba(234, 67, 53, 0.4);
         }
-        .project-icon.ml { 
-            background: linear-gradient(135deg, #34a853, #4285f4);
+        .project-icon.ml {
+            background: linear-gradient(135deg, #34a853, #4285f4); /* Google Green-Blue (same as AI, adjust if needed) */
             box-shadow: 0 0 20px rgba(52, 168, 83, 0.4);
         }
-        .project-icon.quantum { 
-            background: linear-gradient(135deg, #9c27b0, #e91e63);
+        .project-icon.quantum {
+            background: linear-gradient(135deg, #9c27b0, #e91e63); /* Purple-Pink */
             box-shadow: 0 0 20px rgba(156, 39, 176, 0.4);
         }
 
@@ -295,6 +315,7 @@
             font-size: 1rem;
         }
 
+        /* Tech Stack Tags */
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
@@ -321,27 +342,29 @@
             box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
         }
 
-        .tech-tag.primary { 
-            background: rgba(66, 133, 244, 0.2); 
+        /* Themed Tech Tags (if needed, not used in current HTML) */
+        .tech-tag.primary {
+            background: rgba(66, 133, 244, 0.2);
             border-color: rgba(66, 133, 244, 0.4);
             color: #8ab4f8;
         }
-        .tech-tag.secondary { 
-            background: rgba(234, 67, 53, 0.2); 
+        .tech-tag.secondary {
+            background: rgba(234, 67, 53, 0.2);
             border-color: rgba(234, 67, 53, 0.4);
             color: #f28b82;
         }
-        .tech-tag.success { 
-            background: rgba(52, 168, 83, 0.2); 
+        .tech-tag.success {
+            background: rgba(52, 168, 83, 0.2);
             border-color: rgba(52, 168, 83, 0.4);
             color: #81c995;
         }
-        .tech-tag.warning { 
-            background: rgba(251, 188, 4, 0.2); 
+        .tech-tag.warning {
+            background: rgba(251, 188, 4, 0.2);
             border-color: rgba(251, 188, 4, 0.4);
             color: #fdd663;
         }
 
+        /* Project Status Badges */
         .project-status {
             display: inline-flex;
             align-items: center;
@@ -353,27 +376,34 @@
             backdrop-filter: blur(5px);
         }
 
-        .status-planning { 
-            background: rgba(251, 188, 4, 0.2); 
+        /* Specific Status Colors */
+        .status-planning {
+            background: rgba(251, 188, 4, 0.2);
             color: #fdd663;
             border: 1px solid rgba(251, 188, 4, 0.3);
         }
-        .status-development { 
-            background: rgba(66, 133, 244, 0.2); 
+        .status-development {
+            background: rgba(66, 133, 244, 0.2);
             color: #8ab4f8;
             border: 1px solid rgba(66, 133, 244, 0.3);
         }
-        .status-research { 
-            background: rgba(156, 39, 176, 0.2); 
+        .status-research {
+            background: rgba(156, 39, 176, 0.2);
             color: #c58af9;
             border: 1px solid rgba(156, 39, 176, 0.3);
         }
-        .status-production { 
-            background: rgba(52, 168, 83, 0.2); 
+        .status-production, .status-completed { /* Combined completed and production */
+            background: rgba(52, 168, 83, 0.2);
             color: #81c995;
             border: 1px solid rgba(52, 168, 83, 0.3);
         }
+        .status-coming-soon, .status-in-progress { /* Combined for consistency */
+            background: rgba(251, 188, 4, 0.2); /* Using planning color for now */
+            color: #fdd663;
+            border: 1px solid rgba(251, 188, 4, 0.3);
+        }
 
+        /* Project Metrics (not used in current HTML, but styled) */
         .project-metrics {
             display: flex;
             gap: 1.5rem;
@@ -400,6 +430,7 @@
             letter-spacing: 0.5px;
         }
 
+        /* Add Project Card Styling */
         .add-project {
             background: rgba(255, 255, 255, 0.03);
             border: 2px dashed rgba(255, 255, 255, 0.2);
@@ -407,10 +438,11 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            min-height: 300px;
+            min-height: 300px; /* Ensure it matches height of other cards */
             transition: all 0.3s ease;
             color: #8ab4f8;
             backdrop-filter: blur(5px);
+            text-align: center; /* Center text within the card */
         }
 
         .add-project:hover {
@@ -428,6 +460,7 @@
             text-shadow: 0 0 20px rgba(138, 180, 248, 0.5);
         }
 
+        /* Footer Section */
         .footer {
             text-align: center;
             margin-top: 6rem;
@@ -443,6 +476,7 @@
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
+        /* Social Links */
         .social-links {
             display: flex;
             justify-content: center;
@@ -473,6 +507,7 @@
             box-shadow: 0 8px 25px rgba(66, 133, 244, 0.2);
         }
 
+        /* Keyframe Animations */
         @keyframes twinkle {
             0%, 100% { opacity: 0.3; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.2); }
@@ -518,7 +553,7 @@
             100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
-        .pulse {
+        .pulse { /* Not currently used but defined */
             animation: pulse 2s infinite;
         }
 
@@ -528,28 +563,50 @@
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(66, 133, 244, 0); }
         }
 
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .name {
                 font-size: 2.5rem;
             }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
+
+            .title {
+                font-size: 1.2rem;
             }
-            
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+
             .container {
                 padding: 1rem;
             }
 
-            .project-metrics {
+            .project-metrics { /* Adjust if needed for mobile */
                 justify-content: space-around;
+            }
+
+            .project-card {
+                padding: 1.5rem; /* Smaller padding on mobile */
+            }
+
+            .add-project {
+                min-height: 200px; /* Smaller height for add card on mobile */
+            }
+
+            .social-links {
+                flex-direction: column; /* Stack social links */
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
     <div class="stars-container" id="stars"></div>
-    
+
     <div class="floating-orbs">
         <div class="orb"></div>
         <div class="orb"></div>
@@ -560,54 +617,78 @@
      <div class="container">
         <header class="header">
             <h1 class="name">Brandon Sanchez</h1>
-            <p class="title">Student at SFSU-Software Engineer </p>
-            <p class="subtitle">Crafting tomorrow's digital experiences</p>
+            <p class="title">Student at SFSU - Software Engineer</p>
+            <p class="subtitle">Crafting tomorrow's digital experiences with a cosmic touch</p>
         </header>
 
         <section class="projects-section">
-            <h2 class="section-title"> Projects</h2>
-            
-            <div class="project-card">
-                <div class="project-icon">🚀</div>
-                <h3 class="project-title">E-commerce</h3>
-                <p class="project-description">Developed a full-stack e-commerce solution enabling users to browse products, add to cart, and complete purchases.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">CSS</span>
-                    <span class="tech-tag">javascript</span>
-                </div>
-                <span class="project-status status-completed">Completed</span>
-            </div>
+            <h2 class="section-title">Cosmic Projects</h2>
+            <p class="section-subtitle">A journey through my contributions to the digital universe.</p>
 
+            <div class="projects-grid">
+                <!-- Existing Project 1: E-commerce -->
                 <div class="project-card">
-                <div class="project-icon">🤖</div>
-                <h3 class="project-title">Task Manager System</h3>
-                <p class="project-description">Developed a Java-based Task Management System</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Java</span>
-                    <span class="tech-tag">CLI</span>
-                    <span class="tech-tag">SQL</span>
+                    <div class="project-icon ai">🚀</div>
+                    <h3 class="project-title">E-commerce Platform</h3>
+                    <p class="project-description">Developed a full-stack e-commerce solution enabling users to browse products, add to cart, and complete purchases securely.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                    <span class="project-status status-completed">Completed</span>
+                    <!-- Optional: add metrics if desired -->
+                    <!--
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <div class="metric-value">250+</div>
+                            <div class="metric-label">Users</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">50k+</div>
+                            <div class="metric-label">Products</div>
+                        </div>
+                    </div>
+                    -->
                 </div>
-                <span class="project-status status-completed">Completed</span>
-            </div>
 
-               <div class="project-card">
-                <div class="project-icon">🎮</div>
-                <h3 class="project-title">DealScout</h3>
-                <p class="project-description"> A web application that scrapes the internet for product discounts, sales, and clearances, then ranks and presents them to the user.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">Vite</span>
-                    <span class="tech-tag">Typescript</span>
+                <!-- Existing Project 2: Task Manager System -->
+                <div class="project-card">
+                    <div class="project-icon ml">🤖</div>
+                    <h3 class="project-title">Java Task Manager</h3>
+                    <p class="project-description">Developed a robust Java-based Task Management System with a command-line interface, integrating SQL for data persistence.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">CLI</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">JDBC</span>
+                    </div>
+                    <span class="project-status status-completed">Completed</span>
                 </div>
-                <span class="project-status status-coming-soon">in Progress</span>
-            </div>
 
-                
+                <!-- Existing Project 3: DealScout -->
+                <div class="project-card">
+                    <div class="project-icon blockchain">🎮</div>
+                    <h3 class="project-title">DealScout Web App</h3>
+                    <p class="project-description">A web application that scrapes the internet for product discounts, sales, and clearances, then ranks and presents them to the user, ensuring the best deals are always front and center.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Vite</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">BeautifulSoup</span>
+                    </div>
+                    <span class="project-status status-in-progress">In Progress</span>
+                </div>
+
+                <!-- Add New Project Card - This will be dynamically moved by JS -->
                 <div class="project-card add-project">
                     <div class="add-icon">+</div>
-                    <p style="font-size: 1.1rem; font-weight: 500;">Add New Project</p>
-                    <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">Click to create a new cosmic research project</p>
+                    <p style="font-size: 1.1rem; font-weight: 500;">Add New Cosmic Project</p>
+                    <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">Click to create a new entry for your interstellar research</p>
                 </div>
             </div>
         </section>
@@ -624,73 +705,168 @@
     </div>
 
     <script>
-        // Create animated stars
+        // Initialize Background Animations on Load
+        window.onload = function() {
+            createStars();
+            createShootingStars();
+        };
+
+        // Function to create animated background stars
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const numStars = 200;
-            
+            const numStars = 200; // Number of stars to generate
+
             for (let i = 0; i < numStars; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                
-                // Random size classes
+
+                // Assign random size classes for variety
                 const sizes = ['small', 'medium', 'large'];
                 const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
                 star.classList.add(randomSize);
-                
-                // Random positions
+
+                // Set random positions within the viewport
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
-                
-                // Random animation delay
+
+                // Apply random animation delay for staggered twinkling
                 star.style.animationDelay = Math.random() * 3 + 's';
-                
+
                 starsContainer.appendChild(star);
             }
         }
 
-        // Create shooting stars
+        // Function to create shooting stars at intervals
         function createShootingStars() {
             const starsContainer = document.getElementById('stars');
-            
+
+            // Set an interval for new shooting stars
             setInterval(() => {
                 const shootingStar = document.createElement('div');
                 shootingStar.className = 'shooting-star';
-                
-                // Random starting position (top area)
+
+                // Random starting position (mostly top area, less likely to start from bottom)
                 shootingStar.style.left = Math.random() * 100 + '%';
-                shootingStar.style.top = Math.random() * 30 + '%';
-                
+                shootingStar.style.top = Math.random() * 30 + '%'; // Start higher up
+
                 starsContainer.appendChild(shootingStar);
-                
-                // Remove after animation
+
+                // Remove the shooting star after its animation completes (3 seconds)
                 setTimeout(() => {
                     if (shootingStar.parentNode) {
                         shootingStar.parentNode.removeChild(shootingStar);
                     }
                 }, 3000);
-            }, 5000 + Math.random() * 10000); // Random interval between 5-15 seconds
+            }, 5000 + Math.random() * 10000); // Random interval between 5-15 seconds for new shooting stars
         }
 
-        // Enhanced hover effects with cosmic glow
-        document.querySelectorAll('.project-card:not(.add-project)').forEach(card => {
-            card.addEventListener('mouseenter', function() {
+        // Enhanced hover effects for project cards with cosmic glow
+        // This targets all existing and future non-add-project cards
+        function applyProjectCardHoverEffects(cardElement) {
+            cardElement.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-12px) scale(1.02)';
                 this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.1)';
             });
-            
-            card.addEventListener('mouseleave', function() {
+
+            cardElement.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0) scale(1)';
                 this.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
             });
+        }
+
+        // Apply hover effects to initially existing project cards
+        document.querySelectorAll('.project-card:not(.add-project)').forEach(card => {
+            applyProjectCardHoverEffects(card);
         });
+
 
         // Add project functionality with cosmic theme
         document.querySelector('.add-project').addEventListener('click', function() {
-            const projectName = prompt('🚀 Project Name:');
-            if (!projectName) return;
-            
-            const projectDescription = prompt('📝 Project Description:');
-            if (!projectDescription) return;
-            
-            const techStack = prompt('⚡
+            // Prompt for project name
+            const projectName = prompt('🚀 Enter Project Name:');
+            if (!projectName) return; // Exit if user cancels
+
+            // Prompt for project description
+            const projectDescription = prompt('📝 Enter Project Description:');
+            if (!projectDescription) return; // Exit if user cancels
+
+            // Prompt for tech stack (comma-separated)
+            const techStackInput = prompt('⚡ Enter Technologies (comma-separated, e.g., React, Node.js, AI):');
+            // Split input into an array, trim whitespace
+            const techStackArray = techStackInput ? techStackInput.split(',').map(tech => tech.trim()) : [];
+
+            // Prompt for project icon (single emoji)
+            const projectIcon = prompt('✨ Choose a Project Icon (e.g., 🚀, 🤖, 🎮 - single emoji):');
+
+            // Prompt for project status
+            const projectStatusText = prompt('➡️ Enter Project Status (e.g., Planning, Development, Production, Research):');
+
+            // Map user input status to the corresponding CSS class for styling
+            let statusClass = 'status-planning'; // Default status
+            switch (projectStatusText.toLowerCase()) {
+                case 'development':
+                    statusClass = 'status-development';
+                    break;
+                case 'production':
+                    statusClass = 'status-production';
+                    break;
+                case 'completed': /* Added 'completed' mapping */
+                    statusClass = 'status-completed';
+                    break;
+                case 'research':
+                    statusClass = 'status-research';
+                    break;
+                case 'in progress': /* Added 'in progress' mapping for consistency with existing card */
+                    statusClass = 'status-in-progress';
+                    break;
+                case 'coming soon': /* Added 'coming soon' mapping */
+                    statusClass = 'status-coming-soon';
+                    break;
+                default:
+                    statusClass = 'status-planning'; // Fallback for unrecognized status
+            }
+
+            // Get the projects grid container
+            const projectsGrid = document.querySelector('.projects-grid');
+            // Create a new div element for the project card
+            const newProjectCard = document.createElement('div');
+            newProjectCard.className = 'project-card'; // Apply the base project card styling
+
+            // Determine an icon type class based on the chosen icon or default
+            let iconTypeClass = '';
+            if (projectIcon && projectIcon.includes('🤖') || projectIcon.includes('🧠') || projectIcon.includes('📊')) {
+                iconTypeClass = 'ai';
+            } else if (projectIcon && projectIcon.includes('🔗') || projectIcon.includes('💰')) {
+                iconTypeClass = 'blockchain';
+            } else if (projectIcon && projectIcon.includes('🔬') || projectIcon.includes('🧬')) {
+                iconTypeClass = 'research'; // Assuming you might add this later
+            } else if (projectIcon && projectIcon.includes('⚛️') || projectIcon.includes('🌌')) {
+                iconTypeClass = 'quantum';
+            } else {
+                iconTypeClass = 'ai'; // Default to AI theme if no specific match
+            }
+
+
+            // Populate the new project card's inner HTML using a template literal
+            newProjectCard.innerHTML = `
+                <div class="project-icon ${iconTypeClass}">${projectIcon || '✨'}</div>
+                <h3 class="project-title">${projectName}</h3>
+                <p class="project-description">${projectDescription}</p>
+                <div class="tech-stack">
+                    ${techStackArray.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                </div>
+                <span class="project-status ${statusClass}">${projectStatusText || 'Planning'}</span>
+            `;
+
+            // Get the "Add New Project" card element
+            const addProjectCard = document.querySelector('.add-project');
+            // Insert the new project card right before the "Add New Project" card
+            projectsGrid.insertBefore(newProjectCard, addProjectCard);
+
+            // Re-apply the hover effects to the newly created project card
+            // This is essential because event listeners aren't automatically inherited by new elements
+            applyProjectCardHoverEffects(newProjectCard);
+        });
+    </script>
+</body>
+</html>
